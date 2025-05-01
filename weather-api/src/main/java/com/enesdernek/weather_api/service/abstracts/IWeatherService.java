@@ -9,6 +9,6 @@ public interface IWeatherService {
 	
 	public WeatherDto create(WeatherDtoIU dto);
 	
-	public List<WeatherDto> findAllByOrderByTimestampDesc();
+	public List<WeatherDto> findTop12ByOrderByTimestampDesc();
 
 }

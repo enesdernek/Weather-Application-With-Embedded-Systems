@@ -1,5 +1,6 @@
 package com.enesdernek.weather_api.service.concretes;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,11 +21,16 @@ public class WeatherService implements IWeatherService{
 	private WeatherRepository weatherRepository;
 	
 	public WeatherDto convertToDto(Weather weather) {
-		
-		WeatherDto weatherDto = new WeatherDto();
-		BeanUtils.copyProperties(weather, weatherDto);
-		return weatherDto;
-		
+	    WeatherDto weatherDto = new WeatherDto();
+	    BeanUtils.copyProperties(weather, weatherDto);
+
+	    // timestamp'ı manuel olarak formatla
+	    if (weather.getTimestamp() != null) {
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	        weatherDto.setTimestamp(weather.getTimestamp().format(formatter));
+	    }
+
+	    return weatherDto;
 	}
 
 	@Override
@@ -41,9 +47,9 @@ public class WeatherService implements IWeatherService{
 	}
 
 	@Override
-	public List<WeatherDto> findAllByOrderByTimestampDesc() {
+	public List<WeatherDto> findTop12ByOrderByTimestampDesc(){
 		
-		List<Weather> weathers = this.weatherRepository.findAllByOrderByTimestampDesc();
+		List<Weather> weathers = this.weatherRepository.findTop12ByOrderByTimestampDesc();
 		List<WeatherDto> weatherDtos= new ArrayList<>();
 		
 		for(Weather weather: weathers) {

@@ -9,7 +9,8 @@ import com.enesdernek.weather_api.model.Weather;
 @Repository
 public interface WeatherRepository extends JpaRepository<Weather, Long>{
 
-	public List<Weather> findAllByOrderByTimestampDesc();
+	public List<Weather> findTop12ByOrderByTimestampDesc();
+
 
 	
 }

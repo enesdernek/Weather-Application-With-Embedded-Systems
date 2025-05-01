@@ -1,7 +1,5 @@
 package com.enesdernek.weather_api.dto;
 
-import java.time.LocalDateTime;
-
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,8 +16,10 @@ public class WeatherDto {
 	
 	private float humidity;
 	
+	private float pressure;
+	
 	private boolean isRaining;
 
-    private LocalDateTime timestamp;
+    private String timestamp;
 
 }

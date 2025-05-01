@@ -29,6 +29,8 @@ public class Weather {
 	
 	private float humidity;
 	
+	private float pressure;
+	
 	private boolean isRaining;
 
 	@Column(nullable = false, updatable = false)
