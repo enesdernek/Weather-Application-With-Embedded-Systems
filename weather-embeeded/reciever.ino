@@ -4,8 +4,8 @@
 #include <LoRa.h>
 
 // WiFi bilgileri
-const char* ssid = "enesturknet";
-const char* password = "kedibebekler";
+const char* ssid = "";
+const char* password = "";
 
 // Spring Boot endpointleri
 const char* sensorHistoryUrl = "http://192.168.1.105:8080/sensor-history";
